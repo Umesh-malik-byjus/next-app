@@ -20,7 +20,8 @@ const index = (props) => {
 export default index;
 
 export async function getStaticProps(context) {
-    const res = await fetch('/api/get-post',{
+    const url = process.env.NODE_ENV === 'production' ? 'https://next-app-5sb6zfc7d-umeshmalik.vercel.app' : 'http://localhost:3000';
+    const res = await fetch(`${url}/api/get-post`,{
         method: 'GET'
     });
     const posts = await res.json();
