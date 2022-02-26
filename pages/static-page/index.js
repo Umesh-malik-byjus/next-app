@@ -20,6 +20,8 @@ const index = (props) => {
 export default index;
 
 export async function getStaticProps(context) {
+    console.log('getStaticProps');
+    console.log(process.env.HOST_URL);
     const res = await fetch(`${process.env.HOST_URL}/api/get-post`,{
         method: 'GET'
     });
