@@ -2,6 +2,10 @@ import Link from "next/link";
 
 const Index = (props = {}) => {
     const { post = [] }= props;
+
+    const revalidate = () => {
+        fetch(`/api/revalidate`)
+    }
     return (
         <div>
             <div style={{float:'right', marginRight:'2vw'}}>
@@ -9,7 +13,10 @@ const Index = (props = {}) => {
                     <button>Add New Post</button>
                 </Link>
             </div>
-            <h2>Cached Posts Using ISR/Incremental static site generation</h2>
+            <button onClick={()=> revalidate()}>
+                Revalidate Posts
+            </button>
+            <h2>Cached Posts Using On-demand ISR/Incremental static site generation</h2>
             <div>
                 {post && post.map(p => (
                     <div key={p.id}>
