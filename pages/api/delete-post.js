@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export default async (req, res) => {
+const deletePost = async (req, res) => {
     await prisma.$connect();
     let { body = {} } = req;
     const post = await prisma.post.delete({
@@ -9,3 +9,5 @@ export default async (req, res) => {
     });
     res.status(200).json(post);
 }
+
+export default deletePost;

@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <div>
         <div style={{float:'right', marginRight:'2vw'}}>
-                <Link href='/add-post'>
+                <Link href='/add-post' passHref>
                     <button>Add New Post</button>
                 </Link>
             </div>

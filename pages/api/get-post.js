@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export default async (req, res) =>{
+const getPost = async (req, res) =>{
     await prisma.$connect();
     let { body = {} } = req;
     body = JSON.parse(body);
@@ -10,3 +10,5 @@ export default async (req, res) =>{
     });
     res.status(200).json(post);
 }
+
+export default getPost;
