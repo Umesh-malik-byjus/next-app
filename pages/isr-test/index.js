@@ -1,10 +1,18 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Index = (props = {}) => {
     const { post = [] }= props;
+    const router = useRouter();
 
     const revalidate = () => {
         fetch(`/api/revalidate`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.revalidated === true) {
+                    router.reload();
+                }
+            })
     }
     return (
         <div>
