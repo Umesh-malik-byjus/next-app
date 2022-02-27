@@ -19,16 +19,18 @@ const index = (props) => {
 
 export default index;
 
-// export async function getStaticProps() {
-//     console.log('getStaticProps');
-//     console.log(process.env.HOST_URL);
-//     const res = await fetch(`${process.env.HOST_URL}/api/get-post`,{
-//         method: 'GET'
-//     });
-//     const posts = await res.json();
-//     return {
-//         props: {
-//             post: posts
-//         }
-//     }
-// }
+export async function getStaticProps() {
+    console.log('getStaticProps');
+    console.log(process.env.HOST_URL);
+    const res = await fetch(`${process.env.HOST_URL}/api/get-post`,{
+        method: 'GET'
+    });
+    console.log(res)
+    const posts = await res.json();
+    console.log(posts);
+    return {
+        props: {
+            post: posts
+        }
+    }
+}
