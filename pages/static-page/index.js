@@ -20,16 +20,11 @@ const index = (props) => {
 export default index;
 
 export async function getStaticProps() {
-    console.log('getStaticProps');
-    console.log(process.env.HOST_URL);
     const url = `${process.env.HOST_URL}/api/get-post`
-    console.log(url);
     const res = await fetch(url,{
         method: 'GET'
     });
-    console.log(res)
     const posts = await res.json();
-    console.log(posts);
     return {
         props: {
             post: posts
