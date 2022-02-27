@@ -2,7 +2,7 @@ const index = (props) => {
     const { post = [] }= props;
     return (
         <div>
-            <h2>Cached Posts</h2>
+            <h2>Server Side Rendered Posts</h2>
             <div>
                 {post.map(p => (
                     <div key={p.id}>
@@ -15,11 +15,11 @@ const index = (props) => {
     )
 }
 
-export default index;
+export default index
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const url = `${process.env.HOST_URL}/api/get-post`
-    const res = await fetch(url,{
+    const res = await fetch(url, {
         method: 'GET'
     });
     const posts = await res.json();
