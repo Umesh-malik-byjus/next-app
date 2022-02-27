@@ -1,12 +1,21 @@
+import Link from "next/link";
+
 const index = (props) => {
     const { post = [] }= props;
     return (
         <div>
+            <div style={{float:'right', marginRight:'2vw'}}>
+                <Link href='/add-post'>
+                    <button>Add New Post</button>
+                </Link>
+            </div>
             <h2>Cached Posts</h2>
             <div>
                 {post.map(p => (
                     <div key={p.id}>
-                        <h3>{p.title}</h3>
+                        <Link href={`/static-page/${p.id}`}>
+                            <h3 style={{cursor:"pointer", textDecoration:'underline'}}>{p.title}</h3>
+                        </Link>
                         <p>{p.body}</p>
                     </div>
                 ))}
@@ -18,7 +27,7 @@ const index = (props) => {
 export default index;
 
 export async function getStaticProps() {
-    const url = `${process.env.HOST_URL}/api/get-post`
+    const url = `${process.env.HOST_URL}/api/get-posts`
     const res = await fetch(url,{
         method: 'GET'
     });

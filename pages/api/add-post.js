@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import { v4 as uuidv4 } from 'uuid';
+
 const prisma = new PrismaClient();
 
 const addPost = async (req, res) => {
@@ -9,7 +11,7 @@ const addPost = async (req, res) => {
         data: {
             title,
             body,
-            id: (numberOfPosts + 1).toString()
+            id: uuidv4()
         }
     });
     res.json(post);

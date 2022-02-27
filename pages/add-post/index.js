@@ -5,7 +5,6 @@ const Index = () => {
     const [body, setBody] = useState('');
     
     const addPost = async () => {
-        console.log(title, body);
         await fetch('/api/add-post', {
             method: 'POST',
             headers: {
