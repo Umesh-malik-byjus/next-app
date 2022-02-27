@@ -6,10 +6,10 @@ const Index = () => {
     const [arePostLoading, setArePostLoading] = useState(true);
 
     useEffect(() => {
-        // fetch('/api/get-posts')
-        //     .then(res => res.json())
-        //     .then(data => setPosts(prevState => data))
-        // setArePostLoading(prevState => !prevState);
+        fetch('/api/get-posts')
+            .then(res => res.json())
+            .then(data => setPosts(prevState => data))
+        setArePostLoading(prevState => !prevState);
     }, []);
 
   return (

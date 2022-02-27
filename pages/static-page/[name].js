@@ -31,11 +31,11 @@ const Posts = (props) => {
 export default Posts
 
 export async function getStaticPaths(context){
-    // const url = `${process.env.HOST_URL}/api/get-posts`
-    // const res = await fetch(url,{
-    //     method: 'GET'
-    // });
-    const posts = []
+    const url = `${process.env.HOST_URL}/api/get-posts`
+    const res = await fetch(url,{
+        method: 'GET'
+    });
+    const posts = await res.json();
     const paths = posts.map(post => ({
         params: {
             name: post.id
@@ -48,18 +48,18 @@ export async function getStaticPaths(context){
 }
 
 export async function getStaticProps({params}){
-    // const {name} = params;
-    // const url = `${process.env.HOST_URL}/api/get-post`
-    // const res = await fetch(url,{
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //         id: name
-    //     })
-    // });
-    // const posts = await res.json();
+    const {name} = params;
+    const url = `${process.env.HOST_URL}/api/get-post`
+    const res = await fetch(url,{
+        method: 'POST',
+        body: JSON.stringify({
+            id: name
+        })
+    });
+    const posts = await res.json();
     return {
         props: {
-            post: []
+            post: posts
         }
     }
 }

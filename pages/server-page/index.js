@@ -25,14 +25,14 @@ const index = (props) => {
 export default index
 
 export async function getServerSideProps() {
-    // const url = `${process.env.HOST_URL}/api/get-posts`
-    // const res = await fetch(url, {
-    //     method: 'GET'
-    // });
-    // const posts = await res.json();
+    const url = `${process.env.HOST_URL}/api/get-posts`
+    const res = await fetch(url, {
+        method: 'GET'
+    });
+    const posts = await res.json();
     return {
         props: {
-            post: []
+            post: posts
         }
     }
 }
